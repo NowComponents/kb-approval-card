@@ -1,0 +1,37 @@
+{
+	"name": "@nowcomponent/kb-approval-card",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Card with a brief text content component",
+	"keywords": [
+		"ServiceNow",
+		"Now Experience UI Component",
+		"@nowcomponent/kb-approval-card"
+	],
+	"readme": "./README.md",
+	"engines": {
+		"node": ">=8.6.0",
+		"npm": ">=5.3.0"
+	},
+	"module": "src/index.js",
+	"dependencies": {
+		"@servicenow/cli-archetype": "18.0.0",
+		"@servicenow/cli-component-archetype": "^18.0.0",
+		"@servicenow/library-translate": "paris",
+		"@servicenow/now-accordion": "^18.4.2",
+		"@servicenow/now-card": "^18.4.2",
+		"@servicenow/now-highlighted-value": "^18.4.2",
+		"@servicenow/now-modal": "^18.4.2",
+		"@servicenow/now-rich-text": "^18.4.2",
+		"@servicenow/sass-kit": "paris",
+		"@servicenow/sass-theme": "paris",
+		"@servicenow/ui-core": "paris",
+		"@servicenow/ui-effect-http": "^18.2.5",
+		"@servicenow/ui-renderer-snabbdom": "paris",
+		"node-sass": "^4.14.1"
+	},
+	"devDependencies": {
+		"@servicenow/cli-archetype-dev": "18.0.0",
+		"@servicenow/cli-component-archetype-dev": "18.0.0"
+	}
+}
