@@ -1,0 +1,21 @@
+{
+	"components": {
+	    "x-23746-kb-approval-card": {
+			"uiBuilder": {
+				"associatedTypes": ["global.core", "global.landing-page"],
+				"label": "KB Article Approval Card",
+				"icon": "document-outline",
+				"description": "A KB Article Approval rendered as in card component",
+				"category": "primitives"
+			
+			}, 
+			"innerComponents": [
+				"now-card",
+				"now-rich-text",
+				"now-modal",
+				"now-highlighted-value"
+			]
+	    }
+	},
+	"scopeName": "x_23746_nmc_cont_0"
+}
