@@ -5,6 +5,7 @@ import '@servicenow/now-card';
 import '@servicenow/now-highlighted-value';
 import '@servicenow/now-rich-text';
 import '@servicenow/now-modal';
+import '@servicenow/now-alert';
 import actionHandlers from './actionHandlers.js';
 
 const view = (state, {updateState}) => {
@@ -14,13 +15,19 @@ const view = (state, {updateState}) => {
 	const short_description = state.record['document_id.short_description'];
 	const author = state.record['document_id.author'];
 	const text = state.record['document_id.text'];
-	const cardActions = [
-		{label: 'Approve', variant: 'secondary-positive'},
-		{label: 'Reject', variant: 'secondary-negative'}
-	  ];
+	const approvalState = state.record['state'];
+	const cardActions = approvalState.value === 'requested' ? 
+		[
+			{label: 'Approve', variant: 'secondary-positive'},
+			{label: 'Reject', variant: 'secondary-negative'}
+		] :
+		[
+			{label: approvalState.display_value, variant: 'secondary-positive', disabled: true}
+		];
 
 	return (
 		<div>
+			{state.alert ? <now-alert status={state.alert.status} icon="info-circle-outline" content={state.alert.content} action={{"type":"dismiss"}}></now-alert> : null }
 			<now-card size="lg" interaction="none" slot="content">
 			<now-card-header
 				tagline={{label: kb.display_value + ' > '+ kb_category.display_value, icon: "document-outline"}}
