@@ -58,12 +58,14 @@ export default {
         'NOW_CARD_ACTIONS#ACTION_CLICKED': ({ action, properties, dispatch }) => {
             if (action.payload.action.label == 'Approve') {
                 dispatch('UPDATE_APPROVAL', {
+                    sysparm_display_value: 'all',
                     data: {"state": 'approved'},
                     sys_id: properties.sysid
                 });
             }
             else if (action.payload.action.label == 'Reject') {
                 dispatch('UPDATE_APPROVAL', {
+                    sysparm_display_value: 'all',
                     data: {"state": 'rejected'},
                     sys_id: properties.sysid
                 });
@@ -75,14 +77,35 @@ export default {
         'UPDATE_APPROVAL': createHttpEffect('api/now/table/sysapproval_approver/:sys_id', {
             method: 'PATCH',
             pathParams: ['sys_id'],
+            queryParams: [
+                'sysparm_display_value'
+            ],
             dataParam: 'data',            
             successActionType: 'UPDATE_KB_APPROVAL_SUCCEEDED'
         }),
         /**
-         * TO DO: React to the updated state of the Approval
+         * Update approval state & display alert
          */
-        'UPDATE_KB_APPROVAL_SUCCEEDED': ({ action, updateState }) => {
-            console.log("Approval action successful");
+        'UPDATE_KB_APPROVAL_SUCCEEDED': ({ action, state, updateState }) => {
+            const response = action.payload.result;
+            const alert = {
+                status: 'info',
+                content: "Approval action successful"
+            };
+            let { record } = state;
+            record.state = response.state;
+            
+            updateState({ 
+                record,
+                alert
+             });
+            
+        },
+        /**
+         * Clear alert on user dismiss
+         */
+        'NOW_ALERT#ACTION_CLICKED': ({ updateState }) => {
+            updateState({ alert: undefined });
         }
     }
 }
