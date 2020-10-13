@@ -19,6 +19,7 @@
 		"@servicenow/cli-component-archetype": "^18.0.0",
 		"@servicenow/library-translate": "paris",
 		"@servicenow/now-accordion": "^18.4.2",
+		"@servicenow/now-alert": "^18.4.2",
 		"@servicenow/now-card": "^18.4.2",
 		"@servicenow/now-highlighted-value": "^18.4.2",
 		"@servicenow/now-modal": "^18.4.2",
