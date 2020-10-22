@@ -28,7 +28,7 @@ const view = (state, {updateState}) => {
 	return (
 		<div>
 			{state.alert ? <now-alert status={state.alert.status} icon="info-circle-outline" content={state.alert.content} action={{"type":"dismiss"}}></now-alert> : null }
-			<now-card size="lg" interaction="none" slot="content">
+			<now-card size="lg" interaction="none">
 			<now-card-header
 				tagline={{label: kb.display_value + ' > '+ kb_category.display_value, icon: "document-outline"}}
 				heading={{label: short_description.display_value, size: 'sm', lines: 2}}
@@ -45,9 +45,7 @@ const view = (state, {updateState}) => {
 			</now-card>
 
 			<now-modal size="md" opened={state.modalState.modalOpened} headerLabel={short_description.display_value}>
-				<slot name='defaultSlot'>
-					<now-rich-text html={text.display_value}></now-rich-text>
-				</slot>
+				<now-rich-text html={text.display_value}></now-rich-text>
 			</now-modal>
 		</div>
 	);
